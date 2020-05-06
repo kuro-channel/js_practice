@@ -1,3 +1,5 @@
+// https://paper.dropbox.com/doc/JavaScript--AzY~3pL8wkUBrzCcDRlHfY8iAg-Yi1Ea2sOSumM5jxUZ2YrN
+
 // オブジェクト：名前と値をもつプロパティを格納する入れ物にすぎない
 // 「プロパティ」とはオブジェクトが持つデータのこと。
 var obj = {name : "黒岩 卓誠"}
