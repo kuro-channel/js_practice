@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JavaScript道場：十日目 / DOM操作 その❶</title>
+</head>
+<body>
+	<script>
+        // この関数は文章が読み込まれた時に実行される
+        window.onload = function() {
+            // オブジェクトの復習 Patten1,2,3は同じ
+            // 重要1：オブジェクトは入れ子に出来ます
+            // pattern1: objのメンバとして「name」と「company」（オブジェクト型）がいる
+            var obj1 = {
+                name: "黒岩",
+                company: {
+                    name: "株式会社インプローブ",
+                    address: "群馬県前橋市XXXXX"
+                }
+            };
+            // pattern2
+            var company1 = {
+                name: "株式会社インプローブ",
+                address: "群馬県前橋市XXXXX"
+            };
+            var obj2 = {
+                name: "黒岩",
+                company: company1
+            };
+            // pattern3: objのメンバとして「name」と「company」（オブジェクト型）がいる
+            var name = "黒岩";
+            var company2 = {
+                name: "株式会社インプローブ",
+                address: "群馬県前橋市XXXX"
+            };
+            var obj3 = {name, company2};
+            console.log(obj1);
+            console.log(obj2);
+            console.log(obj3);
+
+            // 重要2：オブジェクトを配列に格納し、
+            // オブジェクトの配列を作ることも出来ます
+	        var pet1 = { name: "たま", age: 3, type: "アメリカンポリダクティル"};
+            var pet2 = { name: "アン・ルイス", age: 22, type: "クリリアンボブテイル"};
+            var obj4 = { name: "黒岩", pets: [pet1, pet2]}; // pets: オブジェクト配列
+			console.log(obj4);
+        }
+	</script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JavaScript道場 | オンライン講座</title>
+</head>
+<body>
+	<script>
+		function square(sample) {
+			console.log(sample);
+			return sample * 2;
+        }
+        function hello(a, b){
+		    console.log(a + b);
+        }
+        square(2);
+		hello(square(3), square(5));
+		// 無名関数
+		var a = function(test){
+		    console.log(test);
+		};
+		console.log(a("test"));
+		// アロー関数 () => { // 処理}
+		(hoge, fuga) => {
+		    // ここに書く
+			console.log("アロー関数");
+		};
+		// setInterval : 一定時間ごとに何か処理したいときに使う関数
+		function func() {
+			console.log("Hello");
+        }
+        // setInterval(() => {
+        //     console.log("おっす！おら悟空！！");
+        // }, 1000);
+        setInterval(func,1000);
+		// setInterval(func(), 1000);
+		// ↑ func()ではない！あくまで関数の情報を渡す。
+        /**
+         * Argument type void is not assignable to parameter type TimerHandler
+         * Type void is not assignable to type string |
+         * Function Type void is not assignable to type Function
+         * Type void is not assignable to type string
+         * @constructor
+         */
+		
+		// 関数オブジェクト
+		function  Hoge() {
+			this.a = 100;
+			this.b = 200
+        };
+		var hoge = new Hoge;
+		console.log(hoge.a);
+        console.log(hoge.b);
+        console.log(hoge);
+        
+        // ポイント：()が先に評価される！
+		function hello(a,b){
+		    a = a * 10;
+		    b = b * 10;
+		    return a + b;
+		}
+		console.log(hello(9,11)); // 200
+		var c = 5;
+		var d = 6;
+        console.log(hello(c,d)); // (a,b)が先に評価されてから、関数が実行される
+	</script>
+</body>
+</html>

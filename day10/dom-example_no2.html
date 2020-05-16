@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>DOM Practice</title>
+</head>
+<body id="test">
+	<h1>JavaScriptテスト</h1>
+	<p class="test-class">10日目の練習問題です。</p>
+	<script>
+		
+		// getElementById
+		// var body1 = document.getElementById("test");
+        // var body2 = document.getElementById("TEST");
+		// console.log(body1); // <body>~</body>
+        // console.log(body2); // null
+		
+		// getElementsByTagName
+        // var body1 = document.getElementsByTagName("h1");
+        // var body2 = document.getElementsByTagName("p");
+        // console.log(body1); // body要素<body>~</body>が取得できる
+        // console.log(body2); // null
+		
+		// getElementsByClassName
+        var body1 = document.getElementsByClassName("test-class");
+        console.log(body1); // HTMLCollection [p.test-class]
+	</script>
+</body>
+</html>
