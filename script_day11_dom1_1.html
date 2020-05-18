@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>CANVAS</title>
+	<meta name="description" content="JavaScript道場：十一日目 / DOM操作 その❷">
+	<style>
+		body {
+			background-color: black;
+			text-align: center;
+		}
+		#canvas {
+			background-color: darkgray;
+		}
+	</style>
+</head>
+<body>
+	<!-- canvasエリア：コードで自由にピクセルの操作が出来る！ -->
+	<canvas id="canvas" width="400" height="400"></canvas>
+	<script>
+        var canvas = document.getElementById('canvas');
+        var ctx = canvas.getContext('2d');
+
+        ctx.fillStyle= "green"; // 色を指定する
+        ctx.fillRect(0,0,50,50); // 矩形（すべての角が直角の、四辺形。長方形。）で塗り潰すエリアを指定する
+		ctx.strokeRect(50,0,50,50); // x,y,w,h : x/y > 座標
+		/**
+         - getContext('2d')
+         `getContext('2d')` 関数の戻り値は canvas に対して「色を塗る」「線を引く」「四角形を描く」などの機能(メソッド)を持ったオブジェクトです！ここでは、変数 `ctx` に格納しています。
+        
+         - fillStyle
+         矩形や円の内部を満たす色を指定するプロパティです。
+        
+         - fillRect
+         矩形を描画する関数です。引数は x座標, y座標, width, height の4つです。*/
+		
+		/** 三角形を書いてみる */
+		ctx.beginPath();
+		ctx.moveTo(100,100); // 始点
+		ctx.lineTo(100,175); // 指定した終点への直線パス
+        ctx.lineTo(200,175); // 指定した終点への直線パス
+        ctx.closePath();
+        ctx.fillStyle = "blue";
+        ctx.fill();
+		
+		/** 円を書いてみる */
+		ctx.beginPath();
+		ctx.arc(240,200,50,0,Math.PI*2,true);
+        ctx.fillStyle = "red";
+		ctx.fill();
+		
+		/** 半円　*/
+        ctx.beginPath();
+        ctx.arc(300,200,50,0,Math.PI,false);
+        ctx.fillStyle = "green";
+        ctx.fill();
+        
+        /** 半円　*/
+        ctx.beginPath();
+        ctx.arc(300,100,50,0,Math.PI,true);
+        ctx.fillStyle = "green";
+        ctx.fill();
+	</script>
+</body>
+</html>

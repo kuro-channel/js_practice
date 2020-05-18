@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>CANVAS</title>
+	<meta name="description" content="JavaScript道場：十二日目 / DOM操作 その❸">
+	<style>
+		body {
+			background-color: black;
+			text-align: center;
+		}
+		#canvas {
+			background-color: darkgray;
+		}
+	</style>
+</head>
+<body>
+	<!-- canvasエリア：コードで自由にピクセルの操作が出来る！ -->
+	<canvas id="canvas" width="400" height="400"></canvas>
+	<script>
+        var canvas = document.getElementById("canvas");
+        var ctx = canvas.getContext("2d");
+        
+        const CANVAS_WIDTH = 400;
+        const CANVAS_HEIGHT = 400;
+        const SQUARE_WIDTH = 50;
+        const SQUARE_HEIGHT = 50;
+
+        /** 複数の四角形を作成する関数 */
+        var renderMultipleSquare = function (){
+            for(var i = 0; i < CANVAS_WIDTH + SQUARE_WIDTH; i+= SQUARE_WIDTH){
+                for(var j = 0; j < CANVAS_HEIGHT + SQUARE_HEIGHT; j+= SQUARE_HEIGHT){
+                    ctx.fillStyle = randomColorCode();
+                    ctx.fillRect(i,j,SQUARE_WIDTH,SQUARE_HEIGHT);
+                }
+            }
+        }
+        
+        /** #000000 - #ffffff までの色コードを返す関数 */
+        function  randomColorCode() {
+            var randomColor = "#";
+            for (var i = 0; i < 6; i++) {
+                randomColor += generateHexCharacter();
+            }
+            return randomColor;
+        }
+        /** ランダムな16進数を1文字返す関数 */
+        function generateHexCharacter(){
+            return Math.floor(16 * Math.random()).toString(16);
+        }
+		setInterval(renderMultipleSquare, 100);
+	</script>
+</body>
+</html>
