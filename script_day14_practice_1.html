@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>CANVAS</title>
+	<meta name="description" content="JavaScript道場：十二日目 / DOM操作 その❸">
+	<style>
+	</style>
+</head>
+<body>
+	<input type="button" onclick="func1()" value="テスト1">
+	<input type="button" onclick="func2()" value="テスト2">
+	<img src="images/ayaka_sasaki.jpeg" width="300" height="225">
+	<script>
+		var flg = false;
+		
+		function func1() {
+			var body = document.getElementsByTagName("body");
+			if(body[0].style.backgroundColor === "pink"){
+			    body[0].style.backgroundColor = "red";
+			}else {
+			    body[0].style.backgroundColor = "pink";
+			}
+		}
+		function func2() {
+		    var body = document.getElementsByTagName('img');
+		    
+		    if(!flg){
+                body[0].src = 'https://hustlepress.co.jp/wp/wp-content/uploads/814207ec793b3fa3355a022c9a80941d/momokuro_zero27_img05.jpg';
+                body[0].width = 200;
+                body[0].height = 300;
+                flg = true;
+		    } else  {
+                body[0].src = 'images/ayaka_sasaki.jpeg';
+                body[0].width = 300;
+                body[0].height = 225;
+                flg = false;
+		    }
+        }
+		
+	</script>
+</body>
+</html>

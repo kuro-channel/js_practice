@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>CANVAS</title>
+	<meta name="description" content="JavaScript道場：十二日目 / DOM操作 その❸">
+	<style>
+		body {
+			background-color: black;
+			text-align: center;
+		}
+		#canvas {
+			background-color: darkgray;
+		}
+	</style>
+</head>
+<body>
+	<script>
+		// 無名関数：名前のついてない関数
+		// callback関数を定義する時によく使われる
+		// 下記の2パターンは同じ結果になる
+		function sayhello(message){
+		    console.log(message)
+		}
+		//setInterval(sayhello, 200 , "hello");
+		setInterval(() => {console.log("Hello")}, 200);
+	</script>
+</body>
+</html>

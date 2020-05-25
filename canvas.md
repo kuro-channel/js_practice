@@ -38,8 +38,25 @@ y…円の中心のy座標
 終了角度をラジアンで指定。
 回り方はtrueで反時計回り、falseで時計回り。
 ```
-- 円形の場合、arc()メソッドを呼び出す際、開始角に0[rad]し、終了角にMath.PI*2[rad]を指定する。
-　　- ラジアンで表すと180°はπ（パイ）、360°は2π（2パイ）となります。
+- canvasで円形を描写する場合、arc()メソッドによって円形のパスを定義する。
+  - 円形の場合、arc()メソッドを呼び出す際、開始角に0[rad]し、終了角にMath.PI*2[rad]を指定する。
+  - ラジアンで表すと180°はπ（パイ）、360°は2π（2パイ）となります。
+
+```javascript
+// 課題1: 円を書いてみよう
+var canvas = document.getElementById("canvas");
+var ctx = canvas.getContext("2d");
+		
+// パスの定義開始
+ctx.beginPath();
+		
+// 円弧のパス定義
+ctx.arc(100,150,50,0,Math.PI*2, false);
+ctx.fillStyle = "blue";
+ctx.fill();
+		
+ctx.closePath();
+```
 
 ###  setInterval
 - MDN: https://developer.mozilla.org/ja/docs/Web/API/Window/setInterval
