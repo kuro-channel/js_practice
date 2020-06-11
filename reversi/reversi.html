@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>オセロゲーム</title>
+
+</head>
+<style>
+	body {
+		background-color: black;
+		text-align: center;
+	}
+</style>
+<body>
+
+	<canvas id="reversi" width="320" height="320" style="background-color: green">
+<!--	        onclick="onClickPutStone(event)">-->
+	</canvas>
+	<div style="text-align: center;">
+<!--		<button onclick="changePlayer()">石を変更</button>-->
+		<div id="player" style="color: white">white</div>
+		<p id="log" style="margin: auto; color: white; width:100px"></p>
+	</div>
+
+</body>
+<script>
+	
+	const CELL_X = 40;
+	const CELL_Y = 40;
+	
+	// canvas要素の参照を取得
+	var canvas = document.getElementById('reversi');
+	
+	// 2Dコンテキストを取得
+	var ctx = canvas.getContext('2d');
+	
+	// オセロのデータ構造: 2次元配列
+    var playBoard = [
+        [0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0],
+    ]
+    var player = 1
+    // displayPlayer.innerText = "white";
+    // ctx.fillStyle = "black";
+	
+
+    // 初期配置を行う関数
+    function initialize() {
+        putStone(3, 4, 1);
+        putStone(4, 4, 2);
+        putStone(3, 3, 2);
+        putStone(4, 3, 1);
+    }
+	
+	// オセロのマス目を引くメソッド
+	function drawPlayBoard(){
+	    // 縦に線を引く
+		for(let i = 1; i <= 7; i++){
+            ctx.beginPath();
+            ctx.moveTo(CELL_X * i, 0);
+            ctx.lineTo(CELL_X * i, 320);
+            ctx.stroke();
+		}
+		// 横に線を引く
+		for(let i = 1; i <= 7; i++){
+            ctx.beginPath();
+            ctx.moveTo(0, CELL_Y * i);
+            ctx.lineTo(320, CELL_Y * i);
+            ctx.stroke();
+		}
+	}
+	
+    // クリックした座標に石を置く
+    // function onClickPutStone(event) {
+    //     // HTMLの中にCANVASがあるので、CANVASのどの位置をクリックしたか
+    //     // 調整するために、CANVASとHTMLの位置関係から補正しています
+    //     var rect = event.target.getBoundingClientRect();
+    //     x = event.clientX - rect.left;
+    //     y = event.clientY - rect.top;
+    //     x = x - x % 40 + 20; // キリが良い箇所に配置されるようにx座標を補正
+    //     y = y - y % 40 + 20; // キリが良い箇所に配置されるようにy座標を補正
+	//
+    //     putStone(posX, posY, player);
+    // }
+
+    // 座標を指定しして石を置く
+    function putStone(x, y, stone) {
+        if (stone == 1) {
+            color = "white"
+        } else {
+            color = "black"
+        }
+
+        ctx.fillStyle = color;
+        ctx.beginPath();
+        ctx.arc(40 * x + 20, 40 * y + 20, 16, 0, 2 * Math.PI);
+        ctx.fill();
+
+        playBoard[y][x] = stone; // 1:white 2:black とする
+        outputLog()
+    }
+
+    // 盤面のログを出力する
+    function outputLog() {
+        log.innerHTML =
+            playBoard[0] + "\n" +
+            playBoard[1] + "\n" +
+            playBoard[2] + "\n" +
+            playBoard[3] + "\n" +
+            playBoard[4] + "\n" +
+            playBoard[5] + "\n" +
+            playBoard[6] + "\n" +
+            playBoard[7] + "\n"
+    }
+    
+    
+	// マス目の描画
+	drawPlayBoard();
+    
+    // 初期化処理
+    initialize();
+</script>
+</html>
