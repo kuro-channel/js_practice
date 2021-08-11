@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>apply,call,bindについて学ぼう</title>
+</head>
+
+<body>
+    <p>apply,call,bindについて学ぼう</p>
+
+</body>
+
+<script>
+    function greet() {
+        let hi = `Hi, ${this.name}`;
+        console.log(hi);
+        // console.log(arguments);
+        let slicedArray = [].slice.call(arguments);
+        console.log(slicedArray);
+    }
+    function greet2(id, id2) {
+        let hi = `Hi, ${this.name}`;
+        console.log(hi);
+        console.log(id);
+        console.log(id2);
+    }
+
+    function maps(id1, id2, ...ids) {
+        console.log(id1); // 1
+        console.log(id2); // 2
+        console.log(ids); // [3~9]
+        console.log(arguments);
+    /* {
+    "0": 1,
+    "1": 2,
+    "2": 3,
+    "3": 4,
+    "4": 5,
+    "5": 6,
+    "6": 7,
+    "7": 8,
+    "8": 9
+    }
+    */
+        // ids.map((id) => console.log(this.name + id));
+    }
+
+    let obj = { name: 'Tom' };
+    let obj2 = { name: 'Takumi' };
+
+    greet.call(obj, 1, 2, 3); // 関数のthisをオブジェクトで決定することができる＆実行できる
+    greet2.call(obj2, 1, 2);
+    // call: 第2引数以降が値
+    // apply: 第2引数以降が配列
+    // 実行時のパラメータの渡し方が違う！
+    let obj3 = { name: 'test' };
+    const arry = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+    maps.apply(obj3, arry);
+
+    let myObj = {
+        id: 42,
+        print() {
+            console.log(this); // 関数内のthis: myObjをポイント
+            setTimeout(function(){
+                console.log(this); 
+                // bindを付ける前：windowオブジェクトをポイント
+                // bindを付けると：myObjをポイントする
+                // console.log(this.id);
+            }.bind(this), 1000);
+        }
+    }
+    myObj.print(); // undefined
+
+</script>
+
+</html>

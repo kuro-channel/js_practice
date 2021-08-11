@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Object-oriented JavaScript example</title>
+</head>
+
+<body>
+    <p>This example requires you to enter commands in your browser's JavaScript console (see <a
+            href="https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_are_browser_developer_tools">What
+            are browser developer tools</a> for more information).</p>
+
+</body>
+
+<script>
+    // 関数内のthis
+    // メソッドが格納されているオブジェクトを参照
+    let myObj = {
+        id: 2,
+        printId() {
+            console.log(this.id);
+        }
+    };
+    // myObj.printId();
+
+    // 呼び出す場所で参照が変わる
+    const sayFoo = function () {
+        console.log(this[foo]);
+    }
+
+    foo = 'foo'; // グローバルオブジェクト
+    // window.foo
+
+    const mySecondObj = {
+        foo: "I'm in the obj",
+        sayFoo
+    }
+
+    // sayFoo();
+    mySecondObj.sayFoo(); // I'm in the obj
+
+    // インスタンス化
+    function MyObj(id) {
+        this.id = id;
+    }
+
+    const newInstance = new MyObj(3);
+    console.log(newInstance.id);
+
+    // プロトタイプ
+    MyObj.prototype.printId = function (id) {
+        console.log(this.id);
+    }
+
+    class Myclass {
+        constructor(id) {
+            // クラス: インスタンス化されたオブジェクトを指す（this）
+            this.id = id;
+        }
+        printId() {
+            console.log(this.id);
+        }
+    }
+
+    const myclass = new Myclass(31);
+    myclass.printId();
+
+    // 入れ子関数内では、thisはグローバルオブジェクトを参照する
+    const outer = {
+        func1: function () {
+            console.log(this);
+            let _that = this; // 一回格納しておく
+
+            const func2 = function () {
+                console.log(this);
+                console.log(_that);
+                const func3 = function () {
+                    console.log(this);
+                    console.log(_that);
+                }();
+            }();
+        }
+    }
+    outer.func1();
+
+</script>
+
+</html>
