@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>アロー関数について学ぼう</title>
+</head>
+
+<body>
+    <p>アロー関数について学ぼう</p>
+
+</body>
+
+<script>
+    // const timesTwo = (i) => {
+    //     return i * 2;
+    // }
+    // 省略できる
+    const timesTwo = i => i * 2;
+    console.log(timesTwo(3));
+
+    /** thisのバインドについて */
+    let normalFn;
+    normalFn = {
+        id: 43,
+        counter: function () {
+            console.log(this);
+            window.setTimeout(() => {
+                console.log(this)
+            }, 1000);
+            // let _that = this;
+            // window.setTimeout(function () {
+            //     console.log(this)
+            // }.bind(this), 1000);
+        }
+    }
+    normalFn.counter();
+
+    window.me = 'global';
+    const outer = function () {
+        let me = 'outer';
+
+        return {
+            me: 'inner',
+            // say: () => {
+            //     console.log(this.me);
+            // }
+            say: function () {
+                console.log(this.me);
+            }
+        }
+    }
+    outer().say();
+
+</script>
+
+</html>

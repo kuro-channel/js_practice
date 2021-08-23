@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>分割代入について学ぼう</title>
+</head>
+
+<body>
+    <p>分割代入について学ぼう</p>
+
+</body>
+
+<script>
+    // 配列
+    let a, b, rest;
+    [a, b] = [10, 20];
+    console.log(a);
+    console.log(b);
+
+    [a, b, ...rest] = [10, 20, 30, 40, 50];
+    console.log(a);
+    console.log(b);
+    console.log(rest);
+
+    [a, , b, e = 1] = [10, 20, 30];
+    console.log(a);
+    console.log(b);
+    console.log(e);
+
+    // オブジェクトの場合、プロパティの名前を一致させる
+    // const { c, d, ...rest2 } = { a: 10, b: 20, c: 30, d: 40 };
+    // console.log(c);
+    // console.log(d);
+    // console.log(rest2);
+
+    const { c: cc, d: dd, ...rest3 } = { a: 10, b: 20, c: 30, d: 40 };
+    console.log('cc', cc);
+    console.log('dd', dd);
+    console.log(rest3);
+
+    // 分割代入を関数の引数で定義する
+    function drawES2015Chart({ size = 'big', coords = { x: 0, y: 0 }, radius = 25 } = {}) {
+        console.log(size, coords, radius);
+    }
+    drawES2015Chart();
+
+</script>
+
+</html>
